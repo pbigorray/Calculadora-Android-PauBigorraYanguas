@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/bSuma"
+        app:layout_constraintStart_toStartOf="@+id/bp"
+        app:layout_constraintTop_toBottomOf="@+id/bp">
+
+        <CheckBox
+            android:id="@+id/desabilitar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/check" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/grupo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/multiplicacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onRadioButtonClicked"
+                    android:tag="*"
+                    android:text="@string/multi"
+                    android:visibility="visible" />
+
+                <RadioButton
+                    android:id="@+id/suma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onRadioButtonClicked"
+                    android:tag="+"
+                    android:text="@string/suma"
+                    android:visibility="visible" />
+
+                <RadioButton
+                    android:id="@+id/division"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onRadioButtonClicked"
+                    android:tag="/"
+                    android:text="@string/divi"
+                    android:visibility="visible" />
+
+                <RadioButton
+                    android:id="@+id/resta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onRadioButtonClicked"
+                    android:tag="-"
+                    android:text="@string/resta"
+                    android:visibility="visible" />
+            </RadioGroup>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/resultado"
+        android:layout_width="319dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="0"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <Button
+        android:id="@+id/b7"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="7"
+        android:text="7"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintStart_toStartOf="@+id/resultado"
+        app:layout_constraintTop_toBottomOf="@+id/bc" />
+
+    <Button
+        android:id="@+id/b0"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="0"
+        android:text="0"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/bp"
+        app:layout_constraintStart_toEndOf="@+id/bp"
+        app:layout_constraintTop_toTopOf="@+id/bp" />
+
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="3"
+        android:text="3"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b2"
+        app:layout_constraintStart_toEndOf="@+id/b2"
+        app:layout_constraintTop_toTopOf="@+id/b2" />
+
+    <Button
+        android:id="@+id/b8"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="8"
+        android:text="8"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b7"
+        app:layout_constraintStart_toEndOf="@+id/b7"
+        app:layout_constraintTop_toTopOf="@+id/b7" />
+
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="2"
+        android:text="2"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b1"
+        app:layout_constraintStart_toEndOf="@+id/b1"
+        app:layout_constraintTop_toTopOf="@+id/b1" />
+
+    <Button
+        android:id="@+id/b6"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="6"
+        android:text="6"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b5"
+        app:layout_constraintStart_toEndOf="@+id/b5"
+        app:layout_constraintTop_toTopOf="@+id/b5" />
+
+    <Button
+        android:id="@+id/bp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="."
+        android:text="."
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintEnd_toEndOf="@+id/b1"
+        app:layout_constraintStart_toStartOf="@+id/b1"
+        app:layout_constraintTop_toBottomOf="@+id/b1" />
+
+    <Button
+        android:id="@+id/b9"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="9"
+        android:text="9"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b8"
+        app:layout_constraintStart_toEndOf="@+id/b8"
+        app:layout_constraintTop_toTopOf="@+id/b8" />
+
+    <Button
+        android:id="@+id/bEn"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="/"
+        android:text="/"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b9"
+        app:layout_constraintStart_toEndOf="@+id/b9"
+        app:layout_constraintTop_toTopOf="@+id/b9" />
+
+    <Button
+        android:id="@+id/b5"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="5"
+        android:text="5"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b4"
+        app:layout_constraintStart_toEndOf="@+id/b4"
+        app:layout_constraintTop_toTopOf="@+id/b4" />
+
+    <Button
+        android:id="@+id/b4"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="4"
+        android:text="4"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintEnd_toEndOf="@+id/b7"
+        app:layout_constraintStart_toStartOf="@+id/b7"
+        app:layout_constraintTop_toBottomOf="@+id/b7" />
+
+    <Button
+        android:id="@+id/bPor"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="*"
+        android:text="*"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b6"
+        app:layout_constraintStart_toEndOf="@+id/b6"
+        app:layout_constraintTop_toTopOf="@+id/b6" />
+
+    <Button
+        android:id="@+id/bRes"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="-"
+        android:text="-"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b3"
+        app:layout_constraintStart_toEndOf="@+id/b3"
+        app:layout_constraintTop_toTopOf="@+id/b3" />
+
+    <Button
+        android:id="@+id/bIgual"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="="
+        android:text="="
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/b0"
+        app:layout_constraintStart_toEndOf="@+id/b0"
+        app:layout_constraintTop_toTopOf="@+id/b0" />
+
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="1"
+        android:text="1"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintEnd_toEndOf="@+id/b4"
+        app:layout_constraintStart_toStartOf="@+id/b4"
+        app:layout_constraintTop_toBottomOf="@+id/b4" />
+
+    <Button
+        android:id="@+id/bSuma"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_heith"
+        android:insetLeft="4dp"
+        android:insetRight="4dp"
+        android:tag="+"
+        android:text="+"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/bIgual"
+        app:layout_constraintStart_toEndOf="@+id/bIgual"
+        app:layout_constraintTop_toTopOf="@+id/bIgual" />
+
+    <Button
+        android:id="@+id/bc"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Clear"
+        android:theme="@style/myButtonStyle"
+        app:layout_constraintEnd_toEndOf="@+id/resultado"
+        app:layout_constraintTop_toBottomOf="@+id/resultado" />
+</androidx.constraintlayout.widget.ConstraintLayout>

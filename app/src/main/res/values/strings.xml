@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Calculadora</string>
+    <string name="check">Mostrar opciones deshabilitar</string>
+    <string name="suma">Suma</string>
+    <string name="resta">Resta</string>
+    <string name="multi">Multiplicacion</string>
+    <string name="divi">Division</string>
+</resources>
