@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonD;
     private Button buttonM;
     private Button buttonP;
-    private Integer resultado,numAux1,numAux2;
+    private Integer resultado;
     private CheckBox desabilitar;
     private RadioButton suma;
     private RadioButton resta;
     private RadioButton multiplicacion;
     private RadioButton division;
-    private String aux;
+    private int aux,aux2;
     private RadioGroup grupo;
 
     private boolean esSuma;
@@ -165,79 +165,110 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-    int conaux=0;
     @Override
     public void onClick(View view) {
         if (view instanceof Button) {
             Button b = (Button) view;
 
             if (b == buttonI) {
-
-                if (conaux==0){
-                    resultado=resultado + Integer.parseInt(textView.getText().toString());
+                if (esSuma) {
+                    aux2 = Integer.parseInt(textView.getText().toString());
+                    resultado = aux + aux2;
                     textView.setText(String.valueOf(resultado));
-                }else {
+                    aux = 0;
+                } else if (esResta) {
+                    aux2 = Integer.parseInt(textView.getText().toString());
+                    resultado = aux - aux2;
                     textView.setText(String.valueOf(resultado));
+                    aux = 0;
+                } else if (esMultip) {
+                    aux2 = Integer.parseInt(textView.getText().toString());
+                    resultado = aux * aux2;
+                    textView.setText(String.valueOf(resultado));
+                    aux = 0;
+                } else if (esDivid) {
+                    aux2 = Integer.parseInt(textView.getText().toString());
+                    resultado = aux / aux2;
+                    textView.setText(String.valueOf(resultado));
+                    aux = 0;
                 }
-                //mallll
+                esSuma = false;
+                esResta = false;
+                esMultip = false;
+                esDivid = false;
 
-                //
 
             } else if (b == buttonS) {
-                if (resultado == 0) {
-                    resultado = resultado - Integer.parseInt(textView.getText().toString());
-                    textView.setText("0");
-                } else {
-                    resultado = resultado + Integer.parseInt(textView.getText().toString());
-                    textView.setText(String.valueOf(resultado));
-                }
+//                if (resultado == 0) {
+//                    resultado = resultado + Integer.parseInt(textView.getText().toString());
+//                    textView.setText("0");
+//                } else {
+//                    resultado = resultado + Integer.parseInt(textView.getText().toString());
+//                    textView.setText(String.valueOf(resultado));
+//                }
+                aux = Integer.parseInt(textView.getText().toString());
+                textView.setText("0");
 
-
+                esSuma = true;
+                esResta = false;
+                esMultip = false;
+                esDivid = false;
             } else if (b == buttonR) {
-//                resultado = resultado -Integer.parseInt(textView.getText().toString());
-//                textView.setText("0");
-                if (resultado == 0) {
-                    resultado = resultado - Integer.parseInt(textView.getText().toString());
-                    textView.setText("0");
-                } else {
-                    resultado = resultado - Integer.parseInt(textView.getText().toString());
-                    textView.setText(String.valueOf(resultado));
-                }
+//                if (resultado == 0) {
+//                    resultado = resultado - Integer.parseInt(textView.getText().toString());
+//                    textView.setText("0");
+//                } else {
+//                    resultado = resultado - Integer.parseInt(textView.getText().toString());
+//                    textView.setText(String.valueOf(resultado));
+//                }
+                aux = Integer.parseInt(textView.getText().toString());
+                textView.setText("0");
+
+                esSuma = false;
+                esResta = true;
+                esMultip = false;
+                esDivid = false;
             } else if (b == buttonM) {
-//                resultado = resultado *Integer.parseInt(textView.getText().toString());
-//                textView.setText("0");
-                if (resultado == 0) {
-                    resultado = resultado * Integer.parseInt(textView.getText().toString());
-                    textView.setText("0");
-                } else {
-                    resultado = resultado * Integer.parseInt(textView.getText().toString());
-                    textView.setText(String.valueOf(resultado));
-                }
+//                if (resultado == 0) {
+//                    resultado = resultado * Integer.parseInt(textView.getText().toString());
+//                    textView.setText("0");
+//                } else {
+//                    resultado = resultado * Integer.parseInt(textView.getText().toString());
+//                    textView.setText(String.valueOf(resultado));
+//                }
+                aux = Integer.parseInt(textView.getText().toString());
+                textView.setText("0");
+
+                esSuma = false;
+                esResta = false;
+                esMultip = true;
+                esDivid = false;
             } else if (b == buttonD) {
-//                resultado = resultado /Integer.parseInt(textView.getText().toString());
-//                textView.setText("0");
-                if (resultado == 0) {
-                    resultado = resultado / Integer.parseInt(textView.getText().toString());
-                    textView.setText("0");
-                } else {
-                    resultado = resultado / Integer.parseInt(textView.getText().toString());
-                    textView.setText(String.valueOf(resultado));
-                }
+//                if (resultado == 0) {
+//                    resultado = resultado / Integer.parseInt(textView.getText().toString());
+//                    textView.setText("0");
+//                } else {
+//                    resultado = resultado / Integer.parseInt(textView.getText().toString());
+//                    textView.setText(String.valueOf(resultado));
+//                }
+                aux = Integer.parseInt(textView.getText().toString());
+                textView.setText("0");
+
+                esSuma = false;
+                esResta = false;
+                esMultip = false;
+                esDivid = true;
             } else if (b == buttonP) {
-//                textView.setText(".");
                 //pasar a float o a dobble
             } else if (b == buttonC) {
                 textView.setText("0");
                 resultado = 0;
-                conaux=0;
             } else {
                 if (textView.getText().equals("0")) {
-                    aux=b.getTag().toString();
-                    textView.setText(aux);
+                    textView.setText(b.getTag().toString());
                 }
                 else{
-                    aux+=b.getTag().toString();
-                    textView.setText(aux);
+                    textView.setText(textView.getText()+ b.getTag().toString());
                 }
 
             }
