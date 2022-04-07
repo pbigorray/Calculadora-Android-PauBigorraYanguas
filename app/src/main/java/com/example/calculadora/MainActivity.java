@@ -29,15 +29,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonD;
     private Button buttonM;
     private Button buttonP;
-    private Integer resultado;
+    private Integer resultado,numAux1,numAux2;
     private CheckBox desabilitar;
     private RadioButton suma;
     private RadioButton resta;
     private RadioButton multiplicacion;
     private RadioButton division;
-    private Float aux;
+    private String aux;
     private RadioGroup grupo;
 
+    private boolean esSuma;
+    private boolean esResta;
+    private boolean esMultip;
+    private boolean esDivid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,32 +103,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        }
 
 
-        if (suma.isSelected()) {
-            buttonS.setEnabled(false);
-        } else {
-            buttonS.setEnabled(true);
-        }
-
         desabilitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (view instanceof CheckBox) {
-                    CheckBox c = (CheckBox) view;
-                    if (grupo.getVisibility() == View.VISIBLE) {
-                        grupo.setVisibility(View.GONE);
+                if (grupo.getVisibility() == View.VISIBLE) {
+                    grupo.setVisibility(View.GONE);
 
-                        suma.setChecked(false);
-                        resta.setChecked(false);
-                        multiplicacion.setChecked(false);
-                        division.setChecked(false);
+                    suma.setChecked(false);
+                    resta.setChecked(false);
+                    multiplicacion.setChecked(false);
+                    division.setChecked(false);
 
-                        buttonS.setEnabled(true);
-                        buttonR.setEnabled(true);
-                        buttonM.setEnabled(true);
-                        buttonD.setEnabled(true);
-                    } else {
-                        grupo.setVisibility(View.VISIBLE);
-                    }
+                    buttonS.setEnabled(true);
+                    buttonR.setEnabled(true);
+                    buttonM.setEnabled(true);
+                    buttonD.setEnabled(true);
+                } else {
+                    grupo.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -133,8 +128,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onRadioButtonClicked(View view) {
-        RadioButton r = (RadioButton) view;
-        // Check which radio button was clicked
         switch (view.getId()) {
             case R.id.suma:
                 if (buttonS.isEnabled()) {
@@ -172,19 +165,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
+    int conaux=0;
     @Override
     public void onClick(View view) {
         if (view instanceof Button) {
             Button b = (Button) view;
 
             if (b == buttonI) {
-                // textView.setText(String.valueOf(resultado + Integer.parseInt(textView.getText().toString())));
-                textView.setText(String.valueOf(resultado));
+
+                if (conaux==0){
+                    resultado=resultado + Integer.parseInt(textView.getText().toString());
+                    textView.setText(String.valueOf(resultado));
+                }else {
+                    textView.setText(String.valueOf(resultado));
+                }
+                //mallll
+
+                //
 
             } else if (b == buttonS) {
                 if (resultado == 0) {
-                    resultado = resultado + Integer.parseInt(textView.getText().toString());
+                    resultado = resultado - Integer.parseInt(textView.getText().toString());
                     textView.setText("0");
                 } else {
                     resultado = resultado + Integer.parseInt(textView.getText().toString());
@@ -228,11 +229,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if (b == buttonC) {
                 textView.setText("0");
                 resultado = 0;
+                conaux=0;
             } else {
-                if (textView.getText().equals("0"))
-                    textView.setText(b.getText().toString());
-                else
-                    textView.setText(b.getTag().toString());
+                if (textView.getText().equals("0")) {
+                    aux=b.getTag().toString();
+                    textView.setText(aux);
+                }
+                else{
+                    aux+=b.getTag().toString();
+                    textView.setText(aux);
+                }
+
             }
 
         }
