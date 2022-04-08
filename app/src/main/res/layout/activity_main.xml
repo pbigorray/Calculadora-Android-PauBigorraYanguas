@@ -82,7 +82,7 @@
         android:id="@+id/resultado"
         android:layout_width="319dp"
         android:layout_height="57dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:gravity="center"
         android:text="0"
         android:textAlignment="textEnd"
@@ -308,4 +308,11 @@
         android:theme="@style/myButtonStyle"
         app:layout_constraintEnd_toEndOf="@+id/resultado"
         app:layout_constraintTop_toBottomOf="@+id/resultado" />
+
+    <TextView
+        android:id="@+id/operacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/resultado"
+        app:layout_constraintEnd_toEndOf="@+id/resultado" />
 </androidx.constraintlayout.widget.ConstraintLayout>
